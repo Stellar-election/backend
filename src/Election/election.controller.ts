@@ -17,8 +17,8 @@ export class ElectionController {
         return this.electionService.getElectionArea(citizenId);
     }
 
-    @Post('create-wallet')
-    createWallet(@Body() UserWallet:CreateUserWallet){
+    @Post('/create-wallet')
+    createWallet(@Body() UserWallet: CreateUserWallet){
         return this.electionService.createUserWallet(UserWallet)
     }
 }

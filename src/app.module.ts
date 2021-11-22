@@ -5,6 +5,7 @@ import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {ElectionModule} from "./Election/election.module";
 import {CreateElectionModule} from "./CreateElection/createElection.module";
+import {StellarModule} from "./Stellar/stellar.module";
 
 @Module({
     imports: [
@@ -33,6 +34,7 @@ import {CreateElectionModule} from "./CreateElection/createElection.module";
         }),
         ElectionModule,
         CreateElectionModule,
+        StellarModule,
     ],
     controllers: [AppController],
     providers: [AppService],
