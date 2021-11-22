@@ -19,3 +19,26 @@ export class CreateUserWallet {
     password: string;
 
 }
+
+export class SendCoin {
+
+    @IsNotEmpty()
+    @ApiProperty()
+    userWallet: CreateUserWallet;
+
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty()
+    destination: string;
+
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty()
+    coinName: string;
+
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty()
+    issuer: string;
+
+}
