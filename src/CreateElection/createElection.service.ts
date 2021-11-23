@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
-import {Candidate, CreateElectionDto, Issuer} from "./dto/CreateElections.dto";
-import {gorv_data, open_area, sub_area, issuer, register_board} from "./models/createElections.entity";
+import {Candidate, CreateElectionDto, Issuer, CitizenId} from "./dto/CreateElections.dto";
+import {gorv_data, open_area, sub_area, issuer, candidate} from "./models/createElections.entity";
 import { InjectRepository } from '@nestjs/typeorm';
 @Injectable()
 export class CreateElectionService {
@@ -29,9 +29,14 @@ export class CreateElectionService {
         return area
     }
 
-    async GetSubArea(citizenId: string){
+    async GetSubArea(citizenId: CitizenId){
         return [...new Set(await gorv_data.find({
-            select:["area_name"]
+            select:["area_name"],
+            where: {
+                citizen_id : citizenId.citizenId,
+                isvote: false
+            },
+            
         }))]
     }
 
@@ -52,7 +57,7 @@ export class CreateElectionService {
     }
 
     async addCandidateInfo(candidateInfo: Candidate) {
-        const new_candidate = register_board.create({
+        const new_candidate = candidate.create({
             citizenId: candidateInfo.citizenId,
             first_name: candidateInfo.first_name,
             last_name: candidateInfo.last_name,
@@ -62,7 +67,7 @@ export class CreateElectionService {
             wallet_address: candidateInfo.wallet_address,
 
         })
-        await register_board.save(new_candidate);
+        await candidate.save(new_candidate);
     }
 
     

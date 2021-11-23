@@ -19,3 +19,28 @@ export class user_area extends BaseEntity {
     area_use: boolean;
 
 }
+
+@Entity("candidate")
+export class candidate extends BaseEntity {
+    @Column({length: 256, nullable: false , primary:true })
+    citizenId: string;
+
+    @Column({length: 256, nullable: false })
+    first_name: string;
+
+    @Column({length: 256, nullable: false })
+    last_name: string;
+
+    @Column({ nullable: false })
+    major_area_id: number;
+
+    @Column({length: 256, nullable: false })
+    major_area_name: string;
+
+    @Column({length: 256, nullable: false })
+    party: string;
+
+    @Column({length: 256, nullable: false })
+    wallet_address: string;
+
+}

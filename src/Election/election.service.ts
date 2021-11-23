@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
-import {user_area} from "./models/elections.entity";
-import {CreateUserWallet} from "./dto/UserVote.dto";
+import {user_area, candidate} from "./models/elections.entity";
+import {CreateUserWallet, AreaName} from "./dto/UserVote.dto";
 require('lodash');
 @Injectable()
 export class ElectionService {
@@ -22,5 +22,14 @@ export class ElectionService {
 
         return "Wallet Key"
 
+    }
+
+    async getCandidate(areaName: AreaName) {
+        return [...new Set(await candidate.find({
+            select: ["citizenId","first_name","last_name","party","wallet_address"],
+            where: {
+                major_area_name : areaName.areaName,
+            },
+        }))]
     }
 }

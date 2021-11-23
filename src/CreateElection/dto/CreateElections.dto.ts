@@ -77,3 +77,12 @@ export class Candidate {
 
 
 }
+
+export class CitizenId {
+
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty()
+    citizenId: string;
+
+}

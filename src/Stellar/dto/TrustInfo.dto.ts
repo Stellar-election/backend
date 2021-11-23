@@ -19,3 +19,23 @@ export class TrustInfo {
     userWallet: CreateUserWallet
 
 }
+
+export class TrustInfoForCandidate {
+
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty()
+    coinName: string;
+
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty()
+    issuer: string;
+
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty()
+    secret: string;
+    
+
+}

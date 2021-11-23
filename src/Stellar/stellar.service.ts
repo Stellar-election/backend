@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
 import axios from "axios";
 import {CreateUserWallet, SendCoin} from "./dto/UserVote.dto";
-import {TrustInfo} from "./dto/TrustInfo.dto";
+import {TrustInfo, TrustInfoForCandidate} from "./dto/TrustInfo.dto";
 import {Account} from "./dto/Account.dto";
 import {GetCoin} from "./dto/GetCoin.dto";
 
@@ -104,10 +104,10 @@ export class StellarService {
         });
     }
     
-    async trustCoin(TrustInfo: TrustInfo) {
-        const coinName = TrustInfo.coinName
-        const issuer = TrustInfo.issuer
-        const keyPair = this.getKeyPair(TrustInfo.userWallet)
+    async trustCoin(TrustInfoForCandidate: TrustInfoForCandidate) {
+        const coinName = TrustInfoForCandidate.coinName
+        const issuer = TrustInfoForCandidate.issuer
+        const keyPair = StellarSdk.Keypair.fromSecret(TrustInfoForCandidate.secret)
         const coin = new StellarSdk.Asset(coinName, issuer);
         const account = keyPair.publicKey();
 

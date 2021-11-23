@@ -19,3 +19,12 @@ export class CreateUserWallet {
     password: string;
 
 }
+
+export class AreaName {
+
+    @IsString()
+    @IsNotEmpty()
+    @ApiProperty()
+    areaName: string;
+
+}

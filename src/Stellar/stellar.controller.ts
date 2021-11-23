@@ -1,7 +1,7 @@
 import {Body, Controller, Get, HttpCode, HttpStatus, Param, Post} from "@nestjs/common";
 import {StellarService} from "./stellar.service";
 import {CreateUserWallet, SendCoin} from "./dto/UserVote.dto";
-import {TrustInfo} from "./dto/TrustInfo.dto";
+import {TrustInfo, TrustInfoForCandidate} from "./dto/TrustInfo.dto";
 import {Account} from "./dto/Account.dto";
 import {GetCoin} from "./dto/GetCoin.dto";
 import {ApiTags} from "@nestjs/swagger";
@@ -34,7 +34,7 @@ export class StellarController {
     
     @HttpCode(HttpStatus.OK)
     @Post('/trustCoin')
-    trustCoin(@Body() trustInfo: TrustInfo) {
+    trustCoin(@Body() trustInfo: TrustInfoForCandidate) {
         return this.stellarService.trustCoin(trustInfo)
     }
         

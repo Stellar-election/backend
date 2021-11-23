@@ -1,6 +1,6 @@
 import {Body, Controller, Get, HttpCode, HttpStatus, Param, Post} from "@nestjs/common";
 import {ElectionService} from "./election.service";
-import {CreateUserWallet} from "./dto/UserVote.dto";
+import {CreateUserWallet, AreaName} from "./dto/UserVote.dto";
 import {ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Vote')
@@ -20,5 +20,10 @@ export class ElectionController {
     @Post('/create-wallet')
     createWallet(@Body() UserWallet: CreateUserWallet){
         return this.electionService.createUserWallet(UserWallet)
+    }
+
+    @Post('/getCandidate')
+    getCandidate(@Body() areaName: AreaName){
+        return this.electionService.getCandidate(areaName)
     }
 }
