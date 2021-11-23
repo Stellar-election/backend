@@ -1,7 +1,7 @@
 import {ApiTags} from "@nestjs/swagger";
 import {Body, Controller, Get, HttpCode, HttpStatus, Post} from "@nestjs/common";
 import { CreateElectionService } from "./createElection.service";
-import {CreateElectionDto} from "./dto/CreateElections.dto";
+import {Candidate, CreateElectionDto, Issuer} from "./dto/CreateElections.dto";
 
 
 @ApiTags('CreateElection')
@@ -19,7 +19,25 @@ export class CreateElectionController{
     }
 
     @Get('all-sub-area')
-    getAllSubArea(){
-        return this.createElectionService.GetSubArea()
+    getAllSubArea(@Body() citizenId: string){
+        return this.createElectionService.GetSubArea(citizenId)
+    }
+
+    @HttpCode(HttpStatus.OK)
+    @Post('addIssuer')
+    addIssuer(@Body() issuer: Issuer){
+        return this.createElectionService.addIssuer(issuer)
+    }
+    
+    @HttpCode(HttpStatus.OK)
+    @Get('getIssuer')
+    getIssuer(){
+        return this.createElectionService.getIssuer() 
+    }
+
+    @HttpCode(HttpStatus.OK)
+    @Post('addCandidate')
+    addCandidateInfo(@Body() candidate: Candidate){
+        return this.createElectionService.addCandidateInfo(candidate)
     }
 }

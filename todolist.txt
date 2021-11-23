@@ -1,0 +1,16 @@
+หน้า dashboard
+    - ปุ่ม create issuer -> ยิงไปสร้าง issuer
+    - ปุ่ม create election -> redirect ไป /create 
+    - ปุ่ม show result -> redirect ไปที่ /result
+
+หน้า create election 
+    - กรอกข้อมูลการเลือกตั้ง -> get area/sub-area แสดงผล
+    - กรอกรายชื่อผู้สมัคร 
+    - ตรวจสอบข้อมูล กดถัดไป -> generate address -> post user /post election    
+    - ผลการสร้าง แสดงผล
+    - 
+สู้สู้
+
+
+
+

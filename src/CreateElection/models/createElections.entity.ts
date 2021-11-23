@@ -1,6 +1,6 @@
 import {BaseEntity, Column, Entity, PrimaryGeneratedColumn,} from 'typeorm';
 
-@Entity()
+@Entity("gorv_data")
 export class gorv_data extends BaseEntity {
     @Column({length: 256, nullable: false,unique: true,primary:true})
     citizen_id: string;
@@ -9,6 +9,7 @@ export class gorv_data extends BaseEntity {
     area_name: string;
 
 }
+
 
 export class open_area extends BaseEntity{
     @PrimaryGeneratedColumn()
@@ -24,6 +25,7 @@ export class open_area extends BaseEntity{
     end_date: Date;
 }
 
+@Entity("sub_area")
 export class sub_area extends BaseEntity{
     @PrimaryGeneratedColumn()
     id: number;
@@ -36,5 +38,42 @@ export class sub_area extends BaseEntity{
 
     @Column({length: 256, nullable: false })
     area_name: string;
+
+}
+@Entity("issuer")
+export class issuer extends BaseEntity {
+    @Column({length: 256, nullable: false, unique: true, primary: true})
+    account: string;
+
+    @Column({length: 256, nullable: false})
+    secret: string;
+
+}
+
+@Entity("register_board")
+export class register_board extends BaseEntity {
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column({length: 256, nullable: false })
+    citizenId: string;
+
+    @Column({length: 256, nullable: false })
+    first_name: string;
+
+    @Column({length: 256, nullable: false })
+    last_name: string;
+
+    @Column({ nullable: false })
+    major_area_id: number;
+
+    @Column({length: 256, nullable: false })
+    major_area_name: string;
+
+    @Column({length: 256, nullable: false })
+    party: string;
+
+    @Column({length: 256, nullable: false })
+    wallet_address: string;
 
 }

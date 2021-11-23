@@ -5,6 +5,7 @@ import {TrustInfo} from "./dto/TrustInfo.dto";
 import {Account} from "./dto/Account.dto";
 import {GetCoin} from "./dto/GetCoin.dto";
 
+
 const StellarSdk = require('stellar-sdk');
 const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
 
