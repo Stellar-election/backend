@@ -52,7 +52,8 @@ export class CreateElectionService {
 
     async getIssuer(){
         return [...new Set(await issuer.find({
-            select:["account","secret"]
+            select:["account","secret"],
+            take: 1
         }))]
     }
 

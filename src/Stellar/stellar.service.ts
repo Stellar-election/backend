@@ -4,6 +4,7 @@ import {CreateUserWallet, SendCoin} from "./dto/UserVote.dto";
 import {TrustInfo, TrustInfoForCandidate} from "./dto/TrustInfo.dto";
 import {Account} from "./dto/Account.dto";
 import {GetCoin} from "./dto/GetCoin.dto";
+import { gorv_data } from "src/CreateElection/models/createElections.entity";
 
 
 const StellarSdk = require('stellar-sdk');
@@ -43,8 +44,12 @@ export class StellarService {
         const keyPair = this.getKeyPair(UserWallet)
         const secret = keyPair.secret()
         const account = keyPair.publicKey()
+        try{
+            await this.addFund(account)
+        } catch(e) {
+            console.log('Account is already created')
+        }
         
-        await this.addFund(account)
 
         return { "account": account }
     }
@@ -190,7 +195,6 @@ export class StellarService {
                 
                 }),
             )
-            
             .setTimeout(100)
             .build();
             transaction.sign(secret);
@@ -213,6 +217,43 @@ export class StellarService {
 
         this.sendCoin(account,keyPair,coin,destination)
 
+        const updateAccount = await gorv_data.findOne({
+            where: {
+                citizen_id: sendCoin.userWallet.citizenId,
+                area_name: sendCoin.coinName
+            }
+        })
+        updateAccount.isvote = true;
+        await gorv_data.save(updateAccount);
+        
         return { "status": 200,}
     }
+
+    // async GetSubArea(citizenId: CitizenId){
+    //     return [...new Set(await gorv_data.find({
+    //         select:["area_name"],
+    //         where: {
+    //             citizen_id : citizenId.citizenId,
+    //             isvote: false
+    //         },
+            
+    //     }))]
+    // }
+
+    // async addIssuer(issuerInfo: Issuer) {
+    //     const new_issuer = issuer.create({
+    //         account: issuerInfo.account,
+    //         secret: issuerInfo.secret,
+    //     })
+    //     await issuer.save(new_issuer);
+
+    //     return new_issuer
+    // }
+
+    // async getIssuer(){
+    //     return [...new Set(await issuer.find({
+    //         select:["account","secret"],
+    //         take: 1
+    //     }))]
+    // }
 }
