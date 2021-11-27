@@ -1,17 +1,18 @@
 version: '3.8'
 
 services:
-  dev:
+
+  app:
     container_name: backend_api
     image: nestjs-api:1.0.0
     build:
-        context: .
-        dockerfile: DOCKERFILE
+      context: .
+      dockerfile: DOCKERFILE
     command: npm run start:debug
     ports:
-        - 4000:4000
+      - "4000:4000"
     networks:
-        - backend-network
+      - backend-network
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
