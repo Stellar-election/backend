@@ -12,12 +12,6 @@ export class CreateElectionController{
     ) {
     }
 
-    @HttpCode(HttpStatus.OK)
-    @Post('create-area')
-    createArea(@Body() CreateElection:CreateElectionDto){
-        return this.createElectionService.CreateElectionArea(CreateElection)
-    }
-
     @Post('all-sub-area')
     getAllSubArea(@Body() citizenId: CitizenId){
         return this.createElectionService.GetSubArea(citizenId)
@@ -36,8 +30,15 @@ export class CreateElectionController{
     }
 
     @HttpCode(HttpStatus.OK)
+    @Get('deleteIssuer')
+    deleteIssuer(){
+        return this.createElectionService.deleteIssuer()
+    }
+
+    @HttpCode(HttpStatus.OK)
     @Post('addCandidate')
     addCandidateInfo(@Body() candidate: Candidate){
         return this.createElectionService.addCandidateInfo(candidate)
     }
+
 }

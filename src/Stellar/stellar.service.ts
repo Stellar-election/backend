@@ -47,7 +47,7 @@ export class StellarService {
         try{
             await this.addFund(account)
         } catch(e) {
-            console.log('Account is already created')
+            console.log('Account is created')
         }
         
 
@@ -78,7 +78,7 @@ export class StellarService {
             transaction.sign(secret);
             return server.submitTransaction(transaction);
         })
-        .then(console.log)
+        .then(console.log('trust is created'))
         .catch(function (error) {
             console.error("Error!", error);
         });
@@ -103,7 +103,7 @@ export class StellarService {
             transaction.sign(secret);
             return server.submitTransaction(transaction);
         })
-        .then(console.log)
+        .then(console.log('trust is created'))
         .catch(function (error) {
             console.error("Error!", error);
         });
@@ -154,7 +154,7 @@ export class StellarService {
             transaction.sign(issuer_secret);
             return server.submitTransaction(transaction);
         })
-        .then(console.log)
+        .then(console.log('the account is ready to vote'))
         .catch(function (error) {
             console.error("Error!", error);
         });
@@ -229,31 +229,4 @@ export class StellarService {
         return { "status": 200,}
     }
 
-    // async GetSubArea(citizenId: CitizenId){
-    //     return [...new Set(await gorv_data.find({
-    //         select:["area_name"],
-    //         where: {
-    //             citizen_id : citizenId.citizenId,
-    //             isvote: false
-    //         },
-            
-    //     }))]
-    // }
-
-    // async addIssuer(issuerInfo: Issuer) {
-    //     const new_issuer = issuer.create({
-    //         account: issuerInfo.account,
-    //         secret: issuerInfo.secret,
-    //     })
-    //     await issuer.save(new_issuer);
-
-    //     return new_issuer
-    // }
-
-    // async getIssuer(){
-    //     return [...new Set(await issuer.find({
-    //         select:["account","secret"],
-    //         take: 1
-    //     }))]
-    // }
 }
