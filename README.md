@@ -1,6 +1,7 @@
 ## DOCKER
 
 ```bash
+$ docker-compose build
 $ docker-compose up -d
 ```
 ## Swagger api docs
