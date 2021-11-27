@@ -11,6 +11,9 @@ $ docker-compose up -d
 
 ## How to run
 ```bash
+cd stellar-election/frontend
+```
+```bash
 yarn install
 ```
 ```bash
