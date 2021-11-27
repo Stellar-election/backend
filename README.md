@@ -1,3 +1,9 @@
+## DOCKER
+
+```bash
+$ docker-compose up -d
+```
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
@@ -71,3 +77,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## How to use 
+
+- following this link https://docs.google.com/document/d/1glxdR0w95ul_qP_xLlDZBITQdTHdGdzFB9vXU5eSNVE/edit
