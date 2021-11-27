@@ -10,9 +10,12 @@ $ docker-compose up -d
 </p>
 
 ## How to run
-- yarn install
-- yarn start
-
+```bash
+yarn install
+```
+```bash
+yarn start
+```
 
 ## How to use 
 - https://docs.google.com/document/d/1glxdR0w95ul_qP_xLlDZBITQdTHdGdzFB9vXU5eSNVE/edit
